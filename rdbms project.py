@@ -320,7 +320,7 @@ class Student:
             messagebox.showerror("ERROR", "ALL FIELD ARE REQUIRED")
         else:
             try:
-                conn = mysql.connector.connect(host="localhost", username="root", password="mir111mir", database="my_data")
+                conn = mysql.connector.connect(host="localhost", username="root", password="", database="my_data")
                 my_cursor = conn.cursor()
                 my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                     self.var_dep.get(),
@@ -348,7 +348,7 @@ class Student:
                 messagebox.showerror("ERROR", f"Due to :{str(es)}", parent=self.root)
     # fetch function
     def fetch_data(self):
-        conn = mysql.connector.connect(host="localhost", username="root", password="mir111mir", database="my_data")
+        conn = mysql.connector.connect(host="localhost", username="root", password="", database="my_data")
         my_cursor = conn.cursor()
         my_cursor.execute("select * from student")
         data = my_cursor.fetchall()
@@ -387,7 +387,7 @@ class Student:
                 update = messagebox.askyesno("UPDATE", "ARE YOU SURE UPDATE THIS STUDENT DATA", parent=self.root)
                 if update>0:
 
-                    conn = mysql.connector.connect(host="localhost", username="root", password="mir111mir", database="my_data")
+                    conn = mysql.connector.connect(host="localhost", username="root", password="", database="my_data")
                     my_cursor = conn.cursor()
                     my_cursor.execute("update student set Dep = %s, course = %s, Year = %s, Semester = %s, Name = %s, Division = %s, Roll = %s, Gender = %s, Dob = %s, Email = %s, Phone = %s, Address = %s, Teacher = %s where student_id = %s",(
                         self.var_dep.get(),
@@ -424,7 +424,7 @@ class Student:
                 Delete = messagebox.askyesno("DELETE","ARE YOU SURE DELETE THIS STUDENT")
                 if Delete>0:
 
-                    conn = mysql.connector.connect(host="localhost", username="root", password="mir111mir", database="my_data")
+                    conn = mysql.connector.connect(host="localhost", username="root", password="", database="my_data")
                     my_cursor = conn.cursor()
                     sql = "delete from student where student_id=%s"
                     value = (self.va_std_id.get(),)
@@ -462,7 +462,7 @@ class Student:
         else:
             try:
 
-                conn = mysql.connector.connect(host="localhost", username="root", password="mir111mir",
+                conn = mysql.connector.connect(host="localhost", username="root", password="",
                                                database="my_data")
                 my_cursor = conn.cursor()
                 my_cursor.execute("select * from student where " +str(self.var_com_search.get())+" LIKE '%"+str(self.var_search.get())+"%'")
